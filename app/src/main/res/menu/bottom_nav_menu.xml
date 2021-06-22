@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/articleFragment"
+        android:icon="@drawable/ic_article"
+        android:title="@string/article" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_account_circle"
+        android:title="@string/profile" />
+</menu>
