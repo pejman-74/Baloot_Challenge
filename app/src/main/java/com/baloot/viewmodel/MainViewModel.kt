@@ -17,14 +17,9 @@ class MainViewModel @Inject constructor(private val articleRepository: ArticleRe
     ViewModel() {
 
     private val pagingConfig = PagingConfig(pageSize = PAGE_SIZE, enablePlaceholders = false)
-    private var currentSearchResult: Flow<PagingData<Article>>? = null
-    private var currentQueryValue: String? = null
-    fun paginatedArticle(query: String): Flow<PagingData<Article>> {
-        if (query == currentQueryValue && currentSearchResult != null)
-            return currentSearchResult!!
-        currentSearchResult =
-            articleRepository.getPaginatedArticle(query, pagingConfig).cachedIn(viewModelScope)
-        currentQueryValue = query
-        return currentSearchResult!!
-    }
+
+    fun paginatedArticle(query: String): Flow<PagingData<Article>> =
+        articleRepository.getPaginatedArticle(query, pagingConfig).cachedIn(viewModelScope)
+
+
 }

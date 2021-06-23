@@ -1,7 +1,6 @@
 package com.baloot.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
@@ -29,6 +28,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article), SearchView.OnQueryT
     private val vModels: MainViewModel by activityViewModels()
     private val articleAdapter by lazy { ArticleAdapter() }
     private lateinit var searchView: SearchView
+    private var lastQuery: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,8 +46,11 @@ class ArticleFragment : Fragment(R.layout.fragment_article), SearchView.OnQueryT
 
     private fun search(query: String) {
         viewLifecycleOwner.lifecycleScope.launch {
-            vModels.paginatedArticle(query).collectLatest { pagingData ->
-                articleAdapter.submitData(pagingData)
+            if (query != lastQuery) {
+                lastQuery = query
+                vModels.paginatedArticle(query).collectLatest { pagingData ->
+                    articleAdapter.submitData(pagingData)
+                }
             }
         }
     }
@@ -68,7 +71,6 @@ class ArticleFragment : Fragment(R.layout.fragment_article), SearchView.OnQueryT
                 ?: loadState.append as? LoadState.Error
                 ?: loadState.prepend as? LoadState.Error
                 ?: loadState.refresh as? LoadState.Error
-            Log.e("TAG", loadState.toString())
             vBinding.clError.isVisible = errorState != null
 
             //check token expired
