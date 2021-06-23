@@ -13,17 +13,29 @@
         <action
             android:id="@+id/action_articleFragment_to_detailArticleFragment"
             app:destination="@id/detailArticleFragment"
-            app:popUpTo="@id/articleFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.baloot.ui.fragment.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_aboutMeBottomSheetDialogFragment"
+            app:destination="@id/aboutMeBottomSheetDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailArticleFragment"
         android:name="com.baloot.ui.fragment.DetailArticleFragment"
         android:label="Detail"
-        tools:layout="@layout/fragment_detail_article" />
+        tools:layout="@layout/fragment_detail_article">
+        <argument
+            android:name="article"
+            app:argType="com.baloot.data.model.Article" />
+    </fragment>
+    <dialog
+        android:id="@+id/aboutMeBottomSheetDialogFragment"
+        android:name="com.baloot.ui.fragment.AboutMeBottomSheetDialogFragment"
+        android:label="fragment_about_me_bottom_sheet_dialog"
+        tools:layout="@layout/fragment_about_me_bottom_sheet_dialog" />
 </navigation>

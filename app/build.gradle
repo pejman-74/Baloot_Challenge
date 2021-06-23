@@ -33,6 +33,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
     }
     buildFeatures {
         viewBinding true
@@ -72,9 +73,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
 
     //hilt DI
-    implementation 'com.google.dagger:hilt-android:2.35'
+    implementation 'com.google.dagger:hilt-android:2.33-beta'
     kapt 'com.google.dagger:hilt-compiler:2.33-beta'
-    implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0'
+    implementation 'androidx.hilt:hilt-navigation-fragment:1.0.0-beta01'
 
     //Room database
     implementation 'androidx.room:room-runtime:2.3.0'
@@ -84,5 +85,7 @@ dependencies {
     //Image loader
     implementation 'io.coil-kt:coil:1.1.1'
 
+    //pagination
+    implementation "androidx.paging:paging-runtime-ktx:3.0.0"
 
 }

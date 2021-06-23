@@ -1,27 +1,22 @@
 package com.baloot.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.baloot.R
 import com.baloot.databinding.FragmentProfileBinding
+import com.baloot.util.viewBinding
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
-    private var _vBinding: FragmentProfileBinding? = null
-    private val vBinding get() = _vBinding!!
+    private val vBinding by viewBinding(FragmentProfileBinding::bind)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _vBinding = FragmentProfileBinding.inflate(inflater, container, false)
-        return vBinding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        vBinding.btnAbout.setOnClickListener {
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToAboutMeBottomSheetDialogFragment())
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _vBinding = null
-    }
 }
