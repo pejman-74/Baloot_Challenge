@@ -16,4 +16,5 @@
     <string name="about_me">About me</string>
     <string name="description_about_me">I became interested in the world of Android 6 years ago and I am always learning and now I am ready to play a role in the team.</string>
     <string name="search">search</string>
+    <string name="token_expired">Token expired</string>
 </resources>

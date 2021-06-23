@@ -74,7 +74,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article), SearchView.OnQueryT
             //check token expired
             val refreshErrorState = loadState.refresh as? LoadState.Error
             if (refreshErrorState?.error is TokenExpireException)
-                Toast.makeText(requireContext(), "Token expired", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.token_expired), Toast.LENGTH_LONG).show()
 
         }
     }
