@@ -1,7 +1,7 @@
 ## Additional Implemented features
 ### Seraching
 ### Caching
-<br /><br /><br />
+<br />
 
 ## Used libraries and architecture
 ### Single Acivity
